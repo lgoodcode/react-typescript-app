@@ -65,7 +65,7 @@ stylelint-prettier
 
 Create the `.stylelintrc` configration file:
 
-```json
+```js
 {
   "extends": [
     "stylelint-config-standard",
@@ -165,7 +165,7 @@ src/reportWebVitals.ts
 
 ### Prettier Config {#prettierConfig}
 
-```json
+```js
 // .prettierrc
 {
   "arrowParens": "always",
@@ -215,9 +215,9 @@ hook:
 // package.json
 {
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     // add this if using StyleLint
-    "src/**/*.css": "stylelint --fix"
+    "src/**/*.css": "stylelint --cache --fix"
   }
 }
 ```
