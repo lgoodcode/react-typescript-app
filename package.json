@@ -65,11 +65,10 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "eslint src",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint src --fix",
     "lint:css": "stylelint src/**/*.css",
-    "lint:css:fix": "stylelint --fix src/**/*.css",
-    "prepare": "husky install"
+    "lint:css:fix": "stylelint --fix src/**/*.css"
   },
   "eslintConfig": {
     "extends": [
@@ -168,12 +167,7 @@
     "webpack-cli": "^4.9.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "eslint --fix",
-    "src/**/*.css": "stylelint --fix"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "src/**/*.css": "stylelint --cache --fix"
   }
 }

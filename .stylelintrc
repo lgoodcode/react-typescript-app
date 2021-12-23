@@ -4,8 +4,8 @@
     "stylelint-config-prettier"
   ],
   "rules": {
+    "font-family-name-quotes": "always-where-recommended",
     "selector-class-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$",
-    "keyframes-name-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$",
-    "font-family-name-quotes": "always-where-recommended"
+    "keyframes-name-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$"
   }
 }
