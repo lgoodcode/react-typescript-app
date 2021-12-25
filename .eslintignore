@@ -1,6 +1,7 @@
 .idea
 .storybook
 .config
+tailwind.config.js
 node_modules/*
 config/*
 public/*

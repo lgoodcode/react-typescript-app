@@ -4,29 +4,142 @@ Base configuration for building React apps in Typescript with Webpack and workfl
 tools such as ESLint, StyleLint, Prettier, and others.
 
 # Table of Contents
+- [React Typescript App](#react-typescript-app)
+- [Table of Contents](#table-of-contents)
+- [TODO](#todo)
+- [Setup the Project {#setupTheProject}](#setup-the-project-setuptheproject)
+  - [VSCode extensions {#vscodeExtensions}](#vscode-extensions-vscodeextensions)
+  - [ESLint](#eslint)
+  - [Stylelint](#stylelint)
+  - [Visual Studio IntelliCode](#visual-studio-intellicode)
+  - [IntelliSense for CSS](#intellisense-for-css)
+  - [CSS Peek](#css-peek)
+  - [Tailwind CSS IntelliSense](#tailwind-css-intellisense)
+  - [Path Intellisense](#path-intellisense)
+  - [Auto Close Tag](#auto-close-tag)
+  - [Auto Rename Tag](#auto-rename-tag)
+  - [Configuration {#vscodeConfig}](#configuration-vscodeconfig)
+- [Installing the Development Dependencies](#installing-the-development-dependencies)
+  - [Create React App {#createReactApp}](#create-react-app-createreactapp)
+  - [Install ESLint {#installESLint}](#install-eslint-installeslint)
+  - [Install StyleLint {#installStyleLint}](#install-stylelint-installstylelint)
+  - [Install Prettier {#installPrettier}](#install-prettier-installprettier)
+  - [TailwindCSS Config {#Tailwind}](#tailwindcss-config-tailwind)
+  - [ESLint Config {#ESLintConfig}](#eslint-config-eslintconfig)
+  - [Prettier Config {#prettierConfig}](#prettier-config-prettierconfig)
+  - [Scripts {#scripts}](#scripts-scripts)
+- [Git Hooks {#gitHook}](#git-hooks-githook)
+  - [lint-staged {#lint-staged}](#lint-staged-lint-staged)
+  - [husky {#husky}](#husky-husky)
+- [Available Scripts {#availableScripts}](#available-scripts-availablescripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
 
-- [Creating the Project](#creatingTheProject)
-    - [Create React App](#createReactApp)
-    - [Install ESLint](#installESLint)
-    - [Install StyleLint (optional)](#installStyleLint)
-    - [Install Prettier](#installPrettier)
-    - [ESLint Config](#ESLintConfig)
-    - [Prettier Config](#prettierConfig)
-    - [Scripts](#scripts)
-    - [Git Hooks](#gitHooks)
-- [Available Scripts](#availableScripts)
+# TODO 
 
-## Creating the Project {#creatingTheProject}
+- [ ] Add a ServiceWorker
+- [ ] Enable HTTP2 support
+
+# Setup the Project {#setupTheProject}
+
+## VSCode extensions {#vscodeExtensions}
+
+The extensions help the workflow by provding snippets or error checking. Some will 
+be the same as some modules that will be installed in the next part with `npm` but,
+won't have the full functionality without the extension in the VSCode IDE.
+
+## [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+The extension fully integrates the ESLint module with the VSCode IDE to highlight
+problems and to fix them on save.
+
+## [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+
+Similar to ESLint but to be able to highlight problems and to fix them on save. 
+
+**NOTE:** you will want to disable the built-in vscode validator in the settings to
+prevent duplicate error warnings and to allow Stylelint to allow the configured rules
+to include or exclude certain errors that you may or may not want the default validator
+to shout at you about.
+
+To disable it, you can change the global setting or the local project `.vscode/settings.json`
+
+```json
+{
+  "css.validate": false
+}
+```
+
+## [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+
+This is required to allow the suggestions to improve workflow and for the following extensions
+to work that also give additional benefits to the workflow.
+
+## [IntelliSense for CSS](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion)
+
+Suggests CSS classes based on definitions found in files in the workspace. Useful when creating
+styles for components to easily autocomplete.
+
+## [CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek)
+
+Allows use to peek definitions of CSS classes found in the workspace directory.
+## [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+
+Allows for IntelliSense suggestions for TailwindCSS classes, linting, and hover preview.
+
+## [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)
+
+Allows a very efficient way or giving suggestions for paths of files as you type them
+including an icon of it.
+
+## [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+
+This is just a little time saver and helps prevent errors from forgetting a closing tag
+by automatically creating it once the opening tag is created.
+
+## [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
+
+Helpful tool and helps prevent errors when changing a tag by automatically changing the
+closing tag synchronously.
+
+## Configuration {#vscodeConfig}
+
+With the extensions installed, we can set the `.vscode/settings.json` configuration file 
+for them to work with the project. Their actual functionality will go in effect once the
+modules are installed into the project and the modules themselves are configured to perform
+the actions we want.
+
+Creating the `settings.json` file:
+
+```json
+// settings.json
+{
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",  // Sets default formatter to ESLint
+  "eslint.alwaysShowStatus": false,     // Hides the ESLint status bar; no need for server status
+  "eslint.lintTask.enable": true,       // Allows the ESLint task to lint the whole workspace
+  "emmet.triggerExpansionOnTab": true,  // Allows emmet to create the abbreviation on tab press
+  "emmet.includeLanguages": {           // Allows the emmet abbreviations for react
+      "javascript": "javascriptreact",
+      "typescript": "typescriptreact",
+  },
+  "typescript.validate.enable": false,  // Prevent VSCode from validating to use ESLint
+  "javascript.validate.enable": false,
+  "css.validate": false,                // Prevent VSCode from validating css files while using stylelint
+}
+```
+
+# Installing the Development Dependencies
 
 This is a basic tutorial that goes over the installation and configuration of the
 modules, plugins, and config files for the app to have an easy-to-use, consistent,
 and error free workflow.
 
-### Create React App {#createReactApp}
+## Create React App {#createReactApp}
 
 Create the project [create-react-app](https://create-react-app.dev/docs/adding-typescript/#installation):  
 
-```
+```bash
 npx create-react-app APP_NAME --template typescript
 ```
 
@@ -36,7 +149,7 @@ Change the directory to the app and then eject it to get control of the configur
 npm run eject
 ```
 
-### Install ESLint {#installESLint}
+## Install ESLint {#installESLint}
 
 Install the dependencies for ESLint typescript, react, and airbnb style guide:  
 
@@ -52,7 +165,7 @@ Then install airbnb peer dependencies:
 npx install-peerdeps --dev eslint-config-airbnb
 ```
 
-### Install StyleLint (optional) {#installStyleLint}
+## Install StyleLint {#installStyleLint}
 
 Install the StyleLint to find problems in the style and can be combined with
 Prettier to enforce a consistent style. It requires the standard config for
@@ -65,32 +178,70 @@ stylelint-prettier
 
 Create the `.stylelintrc` configration file:
 
-```js
+```json
 {
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-prettier"
   ],
   "rules": {
-    "font-family-name-quotes": "always-where-recommended",
-    // optional, this uses a Upper case initial letter kebab-case pattern
+    "font-family-name-quotes": null,            // Ignore what quotes are used for family fonts
+    "declaration-colon-space-after": "always",  // Requires a space after a rule semicolon
+    // Optional, this uses a Upper case initial letter kebab-case pattern
     "selector-class-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$",
     "keyframes-name-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$"
   }
 }
 ```
 
-### Install Prettier {#installPrettier}
+## Install Prettier {#installPrettier}
 
 ```bash
 npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-### ESLint config {#ESLintConfig}
+## TailwindCSS Config {#Tailwind}
+
+`create-react-app` ships with TailwindCSS out of the box. We do need to create the
+configuration file for it to work which we can do with it's default theme:
+
+```bash
+npx tailwindcss init -f
+```
+
+Then we need to add the location of the files where the Tailwind will be used in our
+project in the `tailwind.config.js` file that has just been created:
+
+```js
+// tailwind.config.js
+{
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}"
+  ],
+}
+```
+
+Now to enable the Tailwind styles, we have to add the directives to the `src/index.css`
+file:
+
+```css
+/* index.css */
+/* stylelint-disable at-rule-no-unknown -- TailwindCSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+```
+
+This just one point of why Stylelint is powerful as it gives us more control of the
+validation of CSS files. The `@tailwind` directives have to be ignored to prevent
+unwanted errors shouting at us.
+
+## ESLint Config {#ESLintConfig}
 
 Create the `.eslintrc` configuration file:
 
-```js
+```json
 // .eslintrc
 {
   "parser": "@typescript-eslint/parser",
@@ -114,7 +265,12 @@ Create the `.eslintrc` configuration file:
     "plugin:prettier/recommended",
     "plugin:import/recommended" // this is added to allow esModule import syntax
   ],
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest"],
+  "plugins": [
+    "react", 
+    "react-hooks", 
+    "@typescript-eslint", 
+    "jest"
+  ],
   "env": {
     "browser": true,
     "es2021": true,
@@ -163,9 +319,9 @@ src/react-app-env.d.ts
 src/reportWebVitals.ts
 ```
 
-### Prettier Config {#prettierConfig}
+## Prettier Config {#prettierConfig}
 
-```js
+```json
 // .prettierrc
 {
   "arrowParens": "always",
@@ -177,22 +333,21 @@ src/reportWebVitals.ts
 }
 ```
 
-### Scripts {#scripts}
+## Scripts {#scripts}
 
 In `package.json` add the scripts for linting:
 
-```js
+```json
 // scripts
 {
   "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
   "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --fix",
-  // add these if StyleLint is installed
   "lint:css": "stylelint src/**/*.css",
   "lint:css:fix": "stylelint --fix src/**/*.css",
 }
 ```
 
-### Git Hooks {#gitHook}
+# Git Hooks {#gitHook}
 
 Hooks allow scripts to be run during certain phases of Git actions
 such as the commit. We are primarily concerned with ensuring that
@@ -204,19 +359,18 @@ and [lint-staged](https://github.com/okonet/lint-staged):
 npm i --save-dev husky lint-staged
 ```
 
-#### lint-staged {#lint-staged}
+## lint-staged {#lint-staged}
 
 With lint-staged installed, it will do the actual work of running the
 lint command and staging the new changes to the commit automatically.
 We want to add the npm script for husky to execute in the pre-commit
 hook:
 
-```js
+```json
 // package.json
 {
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    // add this if using StyleLint
     "src/**/*.css": "stylelint --cache --fix"
   }
 }
@@ -228,7 +382,7 @@ the glob. In this case, all our js files are checked and fixed. Notice
 how there is no path argument specified because it is called on each
 file.
 
-#### husky {#husky}
+## husky {#husky}
 
 With husky installed we can set it up by running the install command:
 
@@ -256,7 +410,7 @@ or we can manually create the `.husky/pre-commit` script:
 npx lint-staged
 ```
 
-## Available Scripts {#availableScripts}
+# Available Scripts {#availableScripts}
 
 In the project directory, you can run:
 
@@ -282,13 +436,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.

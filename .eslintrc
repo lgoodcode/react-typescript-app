@@ -18,7 +18,12 @@
     "plugin:prettier/recommended",
     "plugin:import/recommended"
   ],
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest"],
+  "plugins": [
+    "react", 
+    "react-hooks", 
+    "@typescript-eslint", 
+    "jest"
+  ],
   "env": {
     "browser": true,
     "es2021": true,
@@ -47,6 +52,7 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "space-before-function-paren": ["error", "never"]
   }
 }
