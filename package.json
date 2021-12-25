@@ -169,5 +169,8 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "src/**/*.css": "stylelint --cache --fix"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }
