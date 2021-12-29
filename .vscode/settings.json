@@ -7,7 +7,8 @@
     "javascript": "javascriptreact",
     "typescript": "typescriptreact",
   },
-  "typescript.validate.enable": false,
-  "javascript.validate.enable": false,
   "css.validate": false,                // Prevent VSCode from validating css files while using stylelint
+  "auto-close-tag.disableOnLanguage": [ // Prevent the AutoCloseTag from making closing tags on types
+    "typescriptreact"
+  ]
 }

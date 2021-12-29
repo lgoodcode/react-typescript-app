@@ -7,6 +7,7 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [React Typescript App](#react-typescript-app)
 - [Table of Contents](#table-of-contents)
 - [TODO](#todo)
+- [Starter Kit](#starter-kit)
 - [Setup the Project {#setupTheProject}](#setup-the-project-setuptheproject)
   - [VSCode extensions {#vscodeExtensions}](#vscode-extensions-vscodeextensions)
   - [ESLint](#eslint)
@@ -35,13 +36,27 @@ tools such as ESLint, StyleLint, Prettier, and others.
     - [`npm start`](#npm-start)
     - [`npm test`](#npm-test)
     - [`npm run build`](#npm-run-build)
+- [Deployment](#deployment)
+  - [Heroku](#heroku)
+    - [Deploying Code](#deploying-code)
 
 # TODO 
 
 - [ ] Add a ServiceWorker
 - [ ] Enable HTTP2 support
+- [ ] Support Heroku deployment out of the box
+- [ ] Add headlessui React components
+- [ ] Add heroicons for icons
+
+# Starter Kit
+
+This project is a starter for Typescript React apps and includes configured files for the VSCode IDE,
+modules, and configuration files like package.json *(includes the Heroku deployment fix)*.
 
 # Setup the Project {#setupTheProject}
+
+The following will cover the extensions and modules used to help the workflow of building the app or is
+required for it to work.
 
 ## VSCode extensions {#vscodeExtensions}
 
@@ -120,12 +135,26 @@ Creating the `settings.json` file:
   "eslint.lintTask.enable": true,       // Allows the ESLint task to lint the whole workspace
   "emmet.triggerExpansionOnTab": true,  // Allows emmet to create the abbreviation on tab press
   "emmet.includeLanguages": {           // Allows the emmet abbreviations for react
-      "javascript": "javascriptreact",
-      "typescript": "typescriptreact",
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
   },
-  "typescript.validate.enable": false,  // Prevent VSCode from validating to use ESLint
-  "javascript.validate.enable": false,
   "css.validate": false,                // Prevent VSCode from validating css files while using stylelint
+  "auto-close-tag.disableOnLanguage": [ // Prevent the AutoCloseTag from making closing tags on types
+    "typescriptreact"
+  ]
+}
+```
+
+For deployment and general development purposes we will include the `engines` property in our
+`package.json` file for reference of the NodeJS environment to use. As of writing this the major
+Node version being used is 16 and we prepend it the the caret symbol to allow any newer version:
+
+```json
+// package.json
+{
+  "engines": {
+    "node": "^16.x"
+  }
 }
 ```
 
@@ -185,11 +214,8 @@ Create the `.stylelintrc` configration file:
     "stylelint-config-prettier"
   ],
   "rules": {
-    "font-family-name-quotes": null,            // Ignore what quotes are used for family fonts
-    "declaration-colon-space-after": "always",  // Requires a space after a rule semicolon
-    // Optional, this uses a Upper case initial letter kebab-case pattern
-    "selector-class-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$",
-    "keyframes-name-pattern": "^([A-Z][a-z0-9]*)(-[a-z0-9]+)*$"
+    "font-family-name-quotes": null,
+    "declaration-colon-space-after": "always"
   }
 }
 ```
@@ -237,6 +263,16 @@ This just one point of why Stylelint is powerful as it gives us more control of 
 validation of CSS files. The `@tailwind` directives have to be ignored to prevent
 unwanted errors shouting at us.
 
+To make any custom classes that consist of TailwindCSS classes:
+
+```css
+@layer components {
+  .btn {
+    @apply font-medium py-2 px-3 m-2 rounded
+  }
+}
+```
+
 ## ESLint Config {#ESLintConfig}
 
 Create the `.eslintrc` configuration file:
@@ -260,10 +296,8 @@ Create the `.eslintrc` configuration file:
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
-    "plugin:import/recommended" // this is added to allow esModule import syntax
+    "plugin:import/recommended"
   ],
   "plugins": [
     "react", 
@@ -299,7 +333,8 @@ Create the `.eslintrc` configuration file:
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "space-before-function-paren": ["error", "never"]
   }
 }
 ```
@@ -325,11 +360,11 @@ src/reportWebVitals.ts
 // .prettierrc
 {
   "arrowParens": "always",
-  "singleQuote": true,
+  "singleQuote": false,
   "printWidth": 100,
-  "jsxBracketSameLine": false,
+  "bracketSameLine": false,
   "trailingComma": "none",
-  "semi": true
+  "semi": false
 }
 ```
 
@@ -436,3 +471,51 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+# Deployment
+
+## Heroku
+
+To deploy the app to Heroku we first need to make a minor fix that will otherwise cause the build
+to fail. We need to install `fsevents` as a optional dependency because a gives an error of:
+`fsevents not accessible from jest-haste-map`. We use this [solution](https://stackoverflow.com/questions/68021121/fsevents-not-accessible-from-jest-haste-map) to fix it:
+
+```bash
+npm i fsevents@latest -f --save-optional
+```
+
+**The following guide is based on the official [Heroku deployment with Git](https://devcenter.heroku.com/articles/git)**:
+
+We will be deploying for a NodeJS backend so we want to create the application using Heroku's buildpack:
+
+```bash
+heroku create APP_NAME --buildpack heroku/nodejs
+```
+
+If the Heroku app already exists add the Heroku remote repository to our local Git list:
+
+```bash
+heroku git:remote -a HEROKU_APP_NAME
+```
+
+### Deploying Code
+
+To deploy the code to the Heroku app:
+
+```bash
+git push heroku master
+```
+
+Where `heroku` is the name of the remote repository and we want to push to the main or master branch.
+
+If you want to push code from a branch other than the local master branch such as `work`:
+
+```bash
+git push heroku work:master
+```
+
+Once the build suceeds you can open the app:
+
+```bash
+heroku open
+```

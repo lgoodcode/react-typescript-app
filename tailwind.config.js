@@ -4,6 +4,7 @@ module.exports = {
   ],
   presets: [],
   darkMode: 'media', // or 'class'
+  plugins: [],
   theme: {
     screens: {
       sm: '640px',
@@ -228,7 +229,16 @@ module.exports = {
       150: '1.5',
       200: '2',
     },
-    container: {},
+    container: {
+      center: true,
+      padding: {
+        default: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem'
+      }
+    },
     content: {
       none: 'none',
     },
@@ -947,6 +957,5 @@ module.exports = {
     'focus-visible',
     'active',
     'disabled',
-  ],
-  plugins: [],
+  ]
 }
