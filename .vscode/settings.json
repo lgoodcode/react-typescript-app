@@ -16,6 +16,5 @@
   "auto-close-tag.disableOnLanguage": [ // Prevent the AutoCloseTag from making closing tags on types
     "typescript",
     "typescriptreact"
-  ],
-  "typescript.preferences.quoteStyle": "single"
+  ]
 }
