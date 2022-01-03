@@ -4,9 +4,9 @@ Base configuration for building React apps in Typescript with Webpack and workfl
 tools such as ESLint, StyleLint, Prettier, and others.
 
 # Table of Contents
+
 - [React Typescript App](#react-typescript-app)
 - [Table of Contents](#table-of-contents)
-- [TODO](#todo)
 - [About](#about)
 - [Quickstart](#quickstart)
 - [Setup the Project](#setup-the-project)
@@ -34,31 +34,25 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [lint-staged](#lint-staged)
   - [husky](#husky)
 - [Available Scripts](#available-scripts)
-    - [`npm start`](#npm-start)
-    - [`npm test`](#npm-test)
-    - [`npm run build`](#npm-run-build)
+  - [`npm start`](#npm-start)
+  - [`npm test`](#npm-test)
+  - [`npm run build`](#npm-run-build)
 - [Deployment](#deployment)
   - [Heroku](#heroku)
     - [Deploying Code](#deploying-code)
 
-# TODO 
-
-- [ ] Add a ServiceWorker
-- [ ] Enable HTTP2 support
-- [ ] Support Heroku deployment out of the box
-- [ ] Add headlessui React components
-- [ ] Add heroicons for icons
-
-# About 
+# About
 
 This project is a starter for Typescript React apps and includes configured files for the VSCode IDE,
 modules, and configuration files like package.json *(includes the Heroku deployment fix)*.
 
+This README was built with the help of the [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) extension and [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) for formatting.
+
 # Quickstart
 
-To use the initial configuration of the files in the project, simply run the install command, 
-`npm install` to install all the npm modules in the `package.json`. You will, however, need to check 
-out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow 
+To use the initial configuration of the files in the project, simply run the install command,
+`npm install` to install all the npm modules in the `package.json`. You will, however, need to check
+out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow
 tools to work.
 
 # Setup the Project
@@ -69,7 +63,7 @@ away, check out the [quickstart](#quickstart) section.
 
 ## VSCode Extensions
 
-The extensions help the workflow by provding snippets or error checking. Some will 
+The extensions help the workflow by provding snippets or error checking. Some will
 be the same as some modules that will be installed in the next part with `npm` but,
 won't have the full functionality without the extension in the VSCode IDE.
 
@@ -80,7 +74,7 @@ problems and to fix them on save.
 
 ## [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 
-Similar to ESLint but to be able to highlight problems and to fix them on save. 
+Similar to ESLint but to be able to highlight problems and to fix them on save.
 
 **NOTE:** you will want to disable the built-in vscode validator in the settings to
 prevent duplicate error warnings and to allow Stylelint to allow the configured rules
@@ -109,6 +103,7 @@ styles for components to easily autocomplete.
 ## [CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek)
 
 Allows use to peek definitions of CSS classes found in the workspace directory.
+
 ## [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 Allows for IntelliSense suggestions for TailwindCSS classes, linting, and hover preview.
@@ -130,7 +125,7 @@ closing tag synchronously.
 
 ## Configuration
 
-With the extensions installed, we can set the `.vscode/settings.json` configuration file 
+With the extensions installed, we can set the `.vscode/settings.json` configuration file
 for them to work with the project. Their actual functionality will go in effect once the
 modules are installed into the project and the modules themselves are configured to perform
 the actions we want.
@@ -157,7 +152,10 @@ Creating the `settings.json` file:
   "auto-close-tag.disableOnLanguage": [ // Prevent the AutoCloseTag from making closing tags on types
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "markdownlint.config": {              // MarkdownLint extension to ignore multiple h1 headers
+    "MD025": false
+  }
 }
 ```
 
@@ -416,7 +414,7 @@ Create the `.eslintrc` configuration file:
 
 Add the `.eslintignore` file to prevent lint checking certain files:
 
-```
+```bash
 // .eslintignore
 .idea
 .storybook
@@ -462,7 +460,7 @@ In `package.json` add the scripts for linting:
 Hooks allow scripts to be run during certain phases of Git actions
 such as the commit. We are primarily concerned with ensuring that
 the files are error free and formatted before committing. This
-requires two modules; [husky](https://github.com/typicode/husky) 
+requires two modules; [husky](https://github.com/typicode/husky)
 and [lint-staged](https://github.com/okonet/lint-staged):
 
 ```bash
@@ -520,7 +518,7 @@ or we can manually create the `.husky/pre-commit` script:
 npx lint-staged
 ```
 
-Now any commit will first be verified with the pre-commit hook linting and if it failes with a 
+Now any commit will first be verified with the pre-commit hook linting and if it failes with a
 non-zero exit code, it will cancel the commit. If you want to bypass the hook you would use the
 `--no-verify` argument or the shorthand `-n`:
 
@@ -532,7 +530,7 @@ git commit -m --no-verify "test commit"
 
 In the project directory, you can run:
 
-### `npm start`
+## `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -540,12 +538,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+## `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.

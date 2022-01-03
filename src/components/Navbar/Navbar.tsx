@@ -47,10 +47,17 @@ export default function Navbar() {
             <div className="flex items-center justify-between w-full lg:w-auto">
               <a href="/" className="logo btn btn-nav btn-icon">
                 <span className="sr-only">Brand</span>
-                <img className="h-8 w-auto sm:h-10" src={Logo} alt="brand logo" />
+                <img
+                  className="h-8 w-auto sm:h-10"
+                  src={Logo}
+                  alt="brand logo"
+                />
               </a>
               <div className="hamburgerBtn flex items-center lg:hidden">
-                <button className="btn btn-nav btn-icon p-0" onClick={() => setOpen(!open)}>
+                <button
+                  className="btn btn-nav btn-icon p-0"
+                  onClick={() => setOpen(!open)}
+                >
                   <Hamburger size={24} toggled={open} />
                 </button>
               </div>
@@ -61,7 +68,11 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className={classNames(item.current ? 'bg-gray-300/40' : '', 'btn', 'btn-nav')}
+                className={classNames(
+                  item.current ? 'bg-gray-300/40' : '',
+                  'btn',
+                  'btn-nav'
+                )}
                 aria-current={item.current ? 'page' : undefined}
               >
                 {item.name}
@@ -70,7 +81,11 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
-      <MobileMenu onOutsideClick={() => setOpen(false)} navigation={navigation} open={open} />
+      <MobileMenu
+        onOutsideClick={() => setOpen(false)}
+        navigation={navigation}
+        open={open}
+      />
     </>
   )
 }

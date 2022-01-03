@@ -1,7 +1,14 @@
 import './Button.css'
 
 type Size = 'sm' | 'md' | 'lg'
-type Variant = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'dark'
+type Variant =
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'dark'
 
 interface ButtonProps {
   className?: string
@@ -26,7 +33,9 @@ export default function Button({
   return (
     <button
       className={
-        `btn ${variant} ${size} ${className}` + (nav ? 'nav' : '') + (disabled ? ' disabled' : '')
+        `btn ${variant} ${size} ${className}` +
+        (nav ? 'nav' : '') +
+        (disabled ? ' disabled' : '')
       }
       onClick={onClick}
       disabled={disabled}

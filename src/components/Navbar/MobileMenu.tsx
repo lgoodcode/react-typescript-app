@@ -14,7 +14,11 @@ interface MenuTypes {
   onOutsideClick: () => void
 }
 
-export default function MobileMenu({ open, navigation, onOutsideClick }: MenuTypes): JSX.Element {
+export default function MobileMenu({
+  open,
+  navigation,
+  onOutsideClick
+}: MenuTypes): JSX.Element {
   return (
     <>
       <div
@@ -30,7 +34,9 @@ export default function MobileMenu({ open, navigation, onOutsideClick }: MenuTyp
               key={item.name}
               href={item.href}
               className={classNames(
-                item.current ? 'bg-gray-100/30 hover:bg-gray-100/40' : 'hover:bg-gray-100/30',
+                item.current
+                  ? 'bg-gray-100/30 hover:bg-gray-100/40'
+                  : 'hover:bg-gray-100/30',
                 'btn text-gray-100 hover:text-gray-200 flex'
               )}
               aria-current={item.current ? 'page' : undefined}

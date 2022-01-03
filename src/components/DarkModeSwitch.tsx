@@ -6,7 +6,10 @@ interface DarkModeSwitchProps {
   setDarkMode: () => void
 }
 
-export default function DarkModeSwitch({ darkMode, setDarkMode }: DarkModeSwitchProps) {
+export default function DarkModeSwitch({
+  darkMode,
+  setDarkMode
+}: DarkModeSwitchProps) {
   return (
     <div className="hidden lg:inline-flex">
       <Switch.Group>

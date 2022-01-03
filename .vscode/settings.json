@@ -1,6 +1,6 @@
 {
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",  // Sets default formatter to ESLint
-  "editor.codeActionsOnSave": {         
+  "editor.codeActionsOnSave": {
     "source.fixAll": true               // Auto fix basic errors on save
   },
   "eslint.alwaysShowStatus": false,     // Hides the ESLint status bar; no need for server status
@@ -16,5 +16,8 @@
   "auto-close-tag.disableOnLanguage": [ // Prevent the AutoCloseTag from making closing tags on types
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "markdownlint.config": {
+    "MD025": false
+  }
 }
