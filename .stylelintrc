@@ -5,6 +5,9 @@
   ],
   "rules": {
     "font-family-name-quotes": null,
-    "declaration-colon-space-after": "always"
+    "declaration-colon-space-after": "always",
+    "declaration-block-trailing-semicolon": "always",
+    "block-opening-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always"
   }
 }

@@ -1,12 +1,15 @@
-/* eslint-disable import/extensions */
-import Nav from "./components/Nav"
-import Home from "./components/home/Home"
+import Navbar from './components/Navbar'
+import Home from './components/Home'
 
 export default function App() {
   return (
     <>
-      <Nav />
-      <Home />
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Home />
+      </main>
     </>
   )
 }

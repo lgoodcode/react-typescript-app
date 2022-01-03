@@ -7,9 +7,10 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [React Typescript App](#react-typescript-app)
 - [Table of Contents](#table-of-contents)
 - [TODO](#todo)
-- [Starter Kit](#starter-kit)
+- [About](#about)
+- [Quickstart](#quickstart)
 - [Setup the Project {#setupTheProject}](#setup-the-project-setuptheproject)
-  - [VSCode extensions {#vscodeExtensions}](#vscode-extensions-vscodeextensions)
+  - [VSCode Extensions {#vscodeExtensions}](#vscode-extensions-vscodeextensions)
   - [ESLint](#eslint)
   - [Stylelint](#stylelint)
   - [Visual Studio IntelliCode](#visual-studio-intellicode)
@@ -48,17 +49,25 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [ ] Add headlessui React components
 - [ ] Add heroicons for icons
 
-# Starter Kit
+# About 
 
 This project is a starter for Typescript React apps and includes configured files for the VSCode IDE,
 modules, and configuration files like package.json *(includes the Heroku deployment fix)*.
 
+# Quickstart
+
+To use the initial configuration of the files in the project, simply run the install command, 
+`npm install` to install all the npm modules in the `package.json`. You will, however, need to check 
+out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow 
+tools to work.
+
 # Setup the Project {#setupTheProject}
 
 The following will cover the extensions and modules used to help the workflow of building the app or is
-required for it to work.
+required for it to work. These are used to create the initial start project structure. To start right
+away, check out the [quickstart](#quickstart) section.
 
-## VSCode extensions {#vscodeExtensions}
+## VSCode Extensions {#vscodeExtensions}
 
 The extensions help the workflow by provding snippets or error checking. Some will 
 be the same as some modules that will be installed in the next part with `npm` but,
@@ -80,9 +89,10 @@ to shout at you about.
 
 To disable it, you can change the global setting or the local project `.vscode/settings.json`
 
-```json
+```jsonc
 {
-  "css.validate": false
+  "css.validate": false,
+  "scss.validate": false  // If using sass
 }
 ```
 
@@ -127,10 +137,13 @@ the actions we want.
 
 Creating the `settings.json` file:
 
-```json
+```jsonc
 // settings.json
 {
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",  // Sets default formatter to ESLint
+  "editor.codeActionsOnSave": {         
+    "source.fixAll": true               // Auto fix basic errors on save
+  },
   "eslint.alwaysShowStatus": false,     // Hides the ESLint status bar; no need for server status
   "eslint.lintTask.enable": true,       // Allows the ESLint task to lint the whole workspace
   "emmet.triggerExpansionOnTab": true,  // Allows emmet to create the abbreviation on tab press
@@ -138,18 +151,48 @@ Creating the `settings.json` file:
     "javascript": "javascriptreact",
     "typescript": "typescriptreact",
   },
+  "stylelint.enable": true,             // Ensure Stylelint is enabled
   "css.validate": false,                // Prevent VSCode from validating css files while using stylelint
+  "scss.validate": false,               // Prevent VSCode from validating css files while using stylelint
   "auto-close-tag.disableOnLanguage": [ // Prevent the AutoCloseTag from making closing tags on types
+    "typescript",
     "typescriptreact"
   ]
 }
 ```
 
+For development, and especially with React hooks, you're going to want to be able to debug the
+code you're working on. To be able to do that with the VSCode IDE, we need to create a launch
+configuration to work with the WebpackDevServer.
+
+```jsonc
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:3000",           // The url webpack is configured to launch
+      "webRoot": "${workspaceFolder}/src",      // Specifies the absolute path for the webserver root
+      "sourceMapPathOverrides": {               // Specifies the sourcemap files location  
+        "webpack:///src/*": "${webRoot}/*",
+      }
+    }
+  ]
+}
+```
+
+*Note:* You only need to turn off the VSCode scss validation if using sass.
+
 For deployment and general development purposes we will include the `engines` property in our
 `package.json` file for reference of the NodeJS environment to use. As of writing this the major
 Node version being used is 16 and we prepend it the the caret symbol to allow any newer version:
 
-```json
+```jsonc
 // package.json
 {
   "engines": {
@@ -205,18 +248,38 @@ npm i --save-dev stylelint stylelint-config-standard stylelint-config-prettier
 stylelint-prettier
 ```
 
+If using sass, then you want the shared config for scss as noted in the configuration above,
+otherwise, you don't need to install it. If you are install sass and the config:
+
+```bash
+npm i --save-dev sass stylelint-config-standard-scss
+```
+
 Create the `.stylelintrc` configration file:
 
-```json
+```jsonc
 {
   "extends": [
     "stylelint-config-standard",
+    "stylelint-config-standard-scss",   // If using sass
     "stylelint-config-prettier"
   ],
   "rules": {
     "font-family-name-quotes": null,
-    "declaration-colon-space-after": "always"
+    "declaration-colon-space-after": "always",
+    "declaration-block-trailing-semicolon": "always",
+    "block-opening-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always"
   }
+}
+```
+
+The last two rules enforce a style to make styles easier to read by ensuring there is
+a newline after the opening curly brace and before the closing brace:
+
+```css
+section {
+  margin: 2rem;
 }
 ```
 
@@ -259,6 +322,18 @@ file:
 /* stylelint-enable at-rule-no-unknown */
 ```
 
+**NOTE:** If using sass, you need to modify the rule for the scss Stylelint by prefixing the rule
+with `scss`:
+
+```css
+/* index.scss */
+/* stylelint-disable scss/at-rule-no-unknown -- TailwindCSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable scss/at-rule-no-unknown */
+```
+
 This just one point of why Stylelint is powerful as it gives us more control of the
 validation of CSS files. The `@tailwind` directives have to be ignored to prevent
 unwanted errors shouting at us.
@@ -277,7 +352,7 @@ To make any custom classes that consist of TailwindCSS classes:
 
 Create the `.eslintrc` configuration file:
 
-```json
+```jsonc
 // .eslintrc
 {
   "parser": "@typescript-eslint/parser",
@@ -356,11 +431,11 @@ src/reportWebVitals.ts
 
 ## Prettier Config {#prettierConfig}
 
-```json
+```jsonc
 // .prettierrc
 {
   "arrowParens": "always",
-  "singleQuote": false,
+  "singleQuote": true,
   "printWidth": 100,
   "bracketSameLine": false,
   "trailingComma": "none",
@@ -372,13 +447,13 @@ src/reportWebVitals.ts
 
 In `package.json` add the scripts for linting:
 
-```json
+```jsonc
 // scripts
 {
   "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
   "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --fix",
-  "lint:css": "stylelint src/**/*.css",
-  "lint:css:fix": "stylelint --fix src/**/*.css",
+  "lint:css": "stylelint src/**/*.{css,scss}",
+  "lint:css:fix": "stylelint --fix src/**/*.{css,scss}",
 }
 ```
 
@@ -401,12 +476,12 @@ lint command and staging the new changes to the commit automatically.
 We want to add the npm script for husky to execute in the pre-commit
 hook:
 
-```json
+```jsonc
 // package.json
 {
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "src/**/*.css": "stylelint --cache --fix"
+    "src/**/*.{css,scss}": "stylelint --cache --fix"
   }
 }
 ```
@@ -443,6 +518,14 @@ or we can manually create the `.husky/pre-commit` script:
 . "$(dirname "$0")/_/husky.sh"
 
 npx lint-staged
+```
+
+Now any commit will first be verified with the pre-commit hook linting and if it failes with a 
+non-zero exit code, it will cancel the commit. If you want to bypass the hook you would use the
+`--no-verify` argument or the shorthand `-n`:
+
+```bash
+git commit -m --no-verify "test commit"
 ```
 
 # Available Scripts {#availableScripts}

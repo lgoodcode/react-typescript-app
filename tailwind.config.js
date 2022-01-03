@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}"
+    './src/**/*.{js,jsx,ts,tsx}'
   ],
   presets: [],
   darkMode: 'media', // or 'class'
@@ -14,6 +14,30 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: ({ colors }) => ({
+      // custom color pallette
+      mundane: {
+        100: '#effffa',
+        200: '#d7e6e1',
+        300: '#bfccc8',
+        400: '#a7b3af',
+        500: '#8f9996',
+        600: '#78807d',
+        700: '#606664',
+        800: '#484c4b',
+        900: '#303332',
+      },
+      midnight: {
+        50: '#e7e7e8',
+        100: '#cfced2',
+        200: '#9e9ea5',
+        300: '#6e6d77',
+        400: '#252434',
+        500: '#0d0c1d',
+        600: '#0c0b1a',
+        700: '#090814',
+        800: '#07060f',
+        900: '#040409'
+      },
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,
@@ -232,11 +256,11 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        default: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem'
+        DEFAULT: '1rem',
+        sm: '3rem',
+        lg: '5rem',
+        xl: '6rem',
+        '2xl': '7rem'
       }
     },
     content: {

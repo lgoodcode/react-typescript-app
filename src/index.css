@@ -4,115 +4,53 @@
 @tailwind utilities;
 /* stylelint-enable at-rule-no-unknown */
 
-/* stylelint-disable-next-line at-rule-no-unknown -- Customize Tailwind */
+/* stylelint-disable-next-line at-rule-no-unknown -- TailwindCSS */
+@layer base {
+  a {
+    @apply text-sky-500 font-medium hover:text-sky-600;
+  }
+
+  section {
+    @apply px-4 sm:px-12 md:px-16 lg:px-24;
+  }
+}
+
+/* stylelint-disable-next-line at-rule-no-unknown -- TailwindCSS */
 @layer components {
-  .btn {
-   @apply font-medium py-2 px-3 m-2 rounded;
-   @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500;
-   @apply duration-300
+ .btn {
+    @apply font-medium px-3 py-2 m-2 rounded;
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500;
+    @apply duration-300;
   }
 
   .btn-icon {
     @apply block p-2 rounded-md text-base font-medium;
   }
 
-  .nav {
+  .btn-nav {
     @apply bg-transparent rounded;
-    @apply text-gray-50 hover:text-gray-100 hover:bg-gray-300/30;
+    @apply text-gray-50 sm:hover:text-gray-100 sm:hover:bg-gray-300/30;
   }
 
-  .nav-mobile {
+  .btn-nav-mobile {
     @apply block px-3 py-2 rounded-md text-base font-medium;
-  }
-
-  .sm {
-    @apply px-2;
-  }
-
-  .md {
-    @apply px-4;
-  }
-
-  .lg {
-    @apply px-8;
-  }
-
-  .xl {
-    @apply px-16;
-  }
-
-  .default {
-    @apply bg-gray-100 text-gray-900;
-  }
-
-  .default:hover {
-    @apply bg-gray-300;
-  }
-
-  .primary {
-    @apply bg-sky-500 text-white;
-  }
-
-  .primary:hover {
-    @apply bg-sky-600 text-white;
-  }
-
-  .success {
-    @apply bg-green-500 text-white;
-  }
-
-  .success:hover {
-    @apply bg-green-600 text-white;
-  }
-
-  .info {
-    @apply bg-blue-500 text-white;
-  }
-
-  .info:hover {
-    @apply bg-blue-600 text-white;
-  }
-
-  .warning {
-    @apply bg-yellow-400 text-white;
-  }
-
-  .warning:hover {
-    @apply bg-yellow-500 text-white;
-  }
-  
-  .danger {
-    @apply bg-red-500 text-white;
-  }
-
-  .danger:hover {
-    @apply bg-red-600 text-white;
-  }
-
-  .dark {
-    @apply bg-gray-800 text-white;
-  }
-
-  .dark:hover {
-    @apply bg-gray-900 text-white;
-  }
-
-  .disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
-
-  .disabled:hover {
-    @apply opacity-50 cursor-not-allowed;
   }
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
+  /**
+   * Set the height to full so that the body can not scroll when mobile menu is open
+   * https://stackoverflow.com/questions/19236349/body-set-to-overflow-yhidden-but-page-is-still-scrollable-in-chrome/27452471
+   */
+  height: 100%;
   color: white;
   margin: 0;
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -121,6 +59,5 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
