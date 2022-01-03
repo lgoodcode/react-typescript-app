@@ -9,8 +9,8 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [TODO](#todo)
 - [About](#about)
 - [Quickstart](#quickstart)
-- [Setup the Project {#setupTheProject}](#setup-the-project-setuptheproject)
-  - [VSCode Extensions {#vscodeExtensions}](#vscode-extensions-vscodeextensions)
+- [Setup the Project](#setup-the-project)
+  - [VSCode Extensions](#vscode-extensions)
   - [ESLint](#eslint)
   - [Stylelint](#stylelint)
   - [Visual Studio IntelliCode](#visual-studio-intellicode)
@@ -20,20 +20,20 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [Path Intellisense](#path-intellisense)
   - [Auto Close Tag](#auto-close-tag)
   - [Auto Rename Tag](#auto-rename-tag)
-  - [Configuration {#vscodeConfig}](#configuration-vscodeconfig)
+  - [Configuration](#configuration)
 - [Installing the Development Dependencies](#installing-the-development-dependencies)
-  - [Create React App {#createReactApp}](#create-react-app-createreactapp)
-  - [Install ESLint {#installESLint}](#install-eslint-installeslint)
-  - [Install StyleLint {#installStyleLint}](#install-stylelint-installstylelint)
-  - [Install Prettier {#installPrettier}](#install-prettier-installprettier)
-  - [TailwindCSS Config {#Tailwind}](#tailwindcss-config-tailwind)
-  - [ESLint Config {#ESLintConfig}](#eslint-config-eslintconfig)
-  - [Prettier Config {#prettierConfig}](#prettier-config-prettierconfig)
-  - [Scripts {#scripts}](#scripts-scripts)
-- [Git Hooks {#gitHook}](#git-hooks-githook)
-  - [lint-staged {#lint-staged}](#lint-staged-lint-staged)
-  - [husky {#husky}](#husky-husky)
-- [Available Scripts {#availableScripts}](#available-scripts-availablescripts)
+  - [Create React App](#create-react-app)
+  - [Install ESLint](#install-eslint)
+  - [Install StyleLint](#install-stylelint)
+  - [Install Prettier](#install-prettier)
+  - [TailwindCSS Config](#tailwindcss-config)
+  - [ESLint Config](#eslint-config)
+  - [Prettier Config](#prettier-config)
+  - [Scripts](#scripts)
+- [Git Hooks](#git-hooks)
+  - [lint-staged](#lint-staged)
+  - [husky](#husky)
+- [Available Scripts](#available-scripts)
     - [`npm start`](#npm-start)
     - [`npm test`](#npm-test)
     - [`npm run build`](#npm-run-build)
@@ -61,13 +61,13 @@ To use the initial configuration of the files in the project, simply run the ins
 out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow 
 tools to work.
 
-# Setup the Project {#setupTheProject}
+# Setup the Project
 
 The following will cover the extensions and modules used to help the workflow of building the app or is
 required for it to work. These are used to create the initial start project structure. To start right
 away, check out the [quickstart](#quickstart) section.
 
-## VSCode Extensions {#vscodeExtensions}
+## VSCode Extensions
 
 The extensions help the workflow by provding snippets or error checking. Some will 
 be the same as some modules that will be installed in the next part with `npm` but,
@@ -128,7 +128,7 @@ by automatically creating it once the opening tag is created.
 Helpful tool and helps prevent errors when changing a tag by automatically changing the
 closing tag synchronously.
 
-## Configuration {#vscodeConfig}
+## Configuration
 
 With the extensions installed, we can set the `.vscode/settings.json` configuration file 
 for them to work with the project. Their actual functionality will go in effect once the
@@ -207,7 +207,7 @@ This is a basic tutorial that goes over the installation and configuration of th
 modules, plugins, and config files for the app to have an easy-to-use, consistent,
 and error free workflow.
 
-## Create React App {#createReactApp}
+## Create React App
 
 Create the project [create-react-app](https://create-react-app.dev/docs/adding-typescript/#installation):  
 
@@ -221,7 +221,7 @@ Change the directory to the app and then eject it to get control of the configur
 npm run eject
 ```
 
-## Install ESLint {#installESLint}
+## Install ESLint
 
 Install the dependencies for ESLint typescript, react, and airbnb style guide:  
 
@@ -237,7 +237,7 @@ Then install airbnb peer dependencies:
 npx install-peerdeps --dev eslint-config-airbnb
 ```
 
-## Install StyleLint {#installStyleLint}
+## Install StyleLint
 
 Install the StyleLint to find problems in the style and can be combined with
 Prettier to enforce a consistent style. It requires the standard config for
@@ -283,13 +283,13 @@ section {
 }
 ```
 
-## Install Prettier {#installPrettier}
+## Install Prettier
 
 ```bash
 npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-## TailwindCSS Config {#Tailwind}
+## TailwindCSS Config
 
 `create-react-app` ships with TailwindCSS out of the box. We do need to create the
 configuration file for it to work which we can do with it's default theme:
@@ -348,7 +348,7 @@ To make any custom classes that consist of TailwindCSS classes:
 }
 ```
 
-## ESLint Config {#ESLintConfig}
+## ESLint Config
 
 Create the `.eslintrc` configuration file:
 
@@ -429,7 +429,7 @@ src/react-app-env.d.ts
 src/reportWebVitals.ts
 ```
 
-## Prettier Config {#prettierConfig}
+## Prettier Config
 
 ```jsonc
 // .prettierrc
@@ -443,7 +443,7 @@ src/reportWebVitals.ts
 }
 ```
 
-## Scripts {#scripts}
+## Scripts
 
 In `package.json` add the scripts for linting:
 
@@ -457,7 +457,7 @@ In `package.json` add the scripts for linting:
 }
 ```
 
-# Git Hooks {#gitHook}
+# Git Hooks
 
 Hooks allow scripts to be run during certain phases of Git actions
 such as the commit. We are primarily concerned with ensuring that
@@ -469,7 +469,7 @@ and [lint-staged](https://github.com/okonet/lint-staged):
 npm i --save-dev husky lint-staged
 ```
 
-## lint-staged {#lint-staged}
+## lint-staged
 
 With lint-staged installed, it will do the actual work of running the
 lint command and staging the new changes to the commit automatically.
@@ -492,7 +492,7 @@ the glob. In this case, all our js files are checked and fixed. Notice
 how there is no path argument specified because it is called on each
 file.
 
-## husky {#husky}
+## husky
 
 With husky installed we can set it up by running the install command:
 
@@ -528,7 +528,7 @@ non-zero exit code, it will cancel the commit. If you want to bypass the hook yo
 git commit -m --no-verify "test commit"
 ```
 
-# Available Scripts {#availableScripts}
+# Available Scripts
 
 In the project directory, you can run:
 
