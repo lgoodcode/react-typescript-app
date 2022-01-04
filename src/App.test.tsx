@@ -4,6 +4,5 @@ import App from './App'
 
 test('renders fish fried fresh', () => {
   render(<App />)
-  const linkElement = screen.getByText(/fish fried fresh/i)
-  expect(linkElement).toBeInTheDocument()
+  expect(screen.getByText(/fish fried fresh/i)).toBeInTheDocument()
 })

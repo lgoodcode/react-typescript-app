@@ -41,17 +41,21 @@ export default function Navbar() {
 
   return (
     <>
-      <div
+      <nav
         className={classNames(
           'navbar',
           scrolled ? 'bg-gray-800 shadow-[0_2px_10px] shadow-gray-900' : '',
           'fixed min-w-full z-30 p-4 sm:px-8 md:px-12 transition-all duration-500'
         )}
       >
-        <nav className="relative flex items-center justify-between sm:h-10 md:justify-end">
+        <div className="relative flex items-center justify-between sm:h-10 md:justify-end">
           <div className="flex items-center flex-grow flex-shrink-0 lg:mr-auto lg:flex-grow-0">
             <div className="flex items-center justify-between w-full lg:w-auto">
-              <a href="/" className="logo btn btn-nav btn-icon">
+              <a
+                href="/"
+                className="logo btn btn-nav btn-icon"
+                data-testid="logo"
+              >
                 <span className="sr-only">Brand</span>
                 <img
                   className="h-8 w-auto sm:h-10"
@@ -59,14 +63,15 @@ export default function Navbar() {
                   alt="brand logo"
                 />
               </a>
-              <div className="hamburgerBtn ml-auto flex items-center lg:hidden">
-                <button
-                  className="btn btn-nav btn-icon p-0"
-                  onClick={() => setOpen(!open)}
-                >
-                  <Hamburger size={24} toggled={open} />
-                </button>
-              </div>
+              <button
+                data-testid="hamburger"
+                className="hamburger-btn btn btn-nav btn-icon p-0 lg:hidden"
+                onClick={() => setOpen(!open)}
+              >
+                <span className="sr-only">Menu</span>
+
+                <Hamburger size={24} toggled={open} />
+              </button>
             </div>
           </div>
           <div className="navbarItems hidden lg:block md:ml-10 md:pr-4 md:space-x-2">
@@ -85,8 +90,8 @@ export default function Navbar() {
               </a>
             ))}
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
 
       <MobileMenu
         onOutsideClick={() => setOpen(false)}

@@ -26,6 +26,7 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [Install ESLint](#install-eslint)
   - [Install StyleLint](#install-stylelint)
   - [Install Prettier](#install-prettier)
+  - [Install Serve](#install-serve)
   - [TailwindCSS Config](#tailwindcss-config)
   - [ESLint Config](#eslint-config)
   - [Prettier Config](#prettier-config)
@@ -286,6 +287,24 @@ section {
 ```bash
 npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
+
+## Install Serve
+
+When developing, it is useful to test builds quickly by using the `serve` npm module. Install it
+globally so it can be used for any project simply with npm:
+
+```bash
+npm install -g serve
+```
+
+While in the directory of the project, run the build, if running the development server, which
+defaults to port `3000`, we can set it to run on a different port with the `-p` argument:
+
+```bash
+serve -s build -p 8080
+```
+
+Then we can go to the site and check how the production build runs super fast!
 
 ## TailwindCSS Config
 
