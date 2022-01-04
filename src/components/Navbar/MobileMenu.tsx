@@ -28,7 +28,7 @@ export default function MobileMenu({
           'fixed h-full lg:hidden bg-gray-800 z-20 w-[60%] sm:w-[40%] top-0 right-0 px-8 duration-500'
         )}
       >
-        <div className="flex flex-col mt-28 max-h-[70%] sm:mt-24 h-[80%] overflow-y-auto border-b-2 shadow-md shadow-gray-900">
+        <div className="flex flex-col mt-28 max-h-[70%] sm:mt-24 overflow-y-auto border-b-2">
           {navigation.map((item: NavItem) => (
             <a
               key={item.name}

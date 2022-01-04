@@ -23,12 +23,14 @@ export default function Home(): JSX.Element {
           <div className="">
             <div>
               <h3 className="text-4xl text-gray-700 font-medium">About Us</h3>
-              <div className="mt-8 font-sans text-gray-600">
+              <div className="mt-8 text-gray-600">
                 <p className="md:max-w-lg">{lorem.generateSentences(6)}</p>
                 <p className="mt-6 md:max-w-lg">{lorem.generateSentences(4)}</p>
               </div>
               <div className="mt-6">
-                <a href="#">Check Us Out</a>
+                <button className="btn default">
+                  <a href="#about">Check Us Out</a>
+                </button>
               </div>
             </div>
           </div>
