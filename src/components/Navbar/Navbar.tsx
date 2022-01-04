@@ -38,14 +38,14 @@ export default function Navbar() {
       <div
         className={classNames(
           'navbar',
-          scrolled ? 'bg-gray-800' : '',
-          'fixed min-w-full z-30 p-4 sm:px-8 md:px-12 transition-colors duration-500 shadow-sm'
+          scrolled ? 'md:bg-gray-800' : '',
+          'fixed min-w-full z-30 p-4 sm:px-8 md:px-12 transition-colors duration-500 lg:shadow-md'
         )}
       >
         <nav className="relative flex items-center justify-between sm:h-10 md:justify-end">
           <div className="flex items-center flex-grow flex-shrink-0 lg:mr-auto lg:flex-grow-0">
             <div className="flex items-center justify-between w-full lg:w-auto">
-              <a href="/" className="logo btn btn-nav btn-icon">
+              <a href="/" className="logo btn btn-nav btn-icon hidden md:block">
                 <span className="sr-only">Brand</span>
                 <img
                   className="h-8 w-auto sm:h-10"
@@ -53,14 +53,6 @@ export default function Navbar() {
                   alt="brand logo"
                 />
               </a>
-              <div className="hamburgerBtn flex items-center lg:hidden">
-                <button
-                  className="btn btn-nav btn-icon p-0"
-                  onClick={() => setOpen(!open)}
-                >
-                  <Hamburger size={24} toggled={open} />
-                </button>
-              </div>
             </div>
           </div>
           <div className="navbarItems hidden lg:block md:ml-10 md:pr-4 md:space-x-2">
@@ -81,6 +73,16 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
+
+      <div className="hamburgerBtn z-30 flex items-center lg:hidden fixed right-4 top-4 sm:right-8">
+        <button
+          className="btn btn-nav btn-icon p-0"
+          onClick={() => setOpen(!open)}
+        >
+          <Hamburger size={24} toggled={open} />
+        </button>
+      </div>
+
       <MobileMenu
         onOutsideClick={() => setOpen(false)}
         navigation={navigation}
