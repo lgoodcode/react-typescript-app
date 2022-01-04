@@ -1,5 +1,6 @@
 import { LoremIpsum } from 'lorem-ipsum'
 import Landing from './Landing'
+import Button from '../Button'
 import AboutImg from '../../img/new.jpg'
 
 const lorem = new LoremIpsum({
@@ -28,9 +29,11 @@ export default function Home(): JSX.Element {
                 <p className="mt-6 md:max-w-lg">{lorem.generateSentences(4)}</p>
               </div>
               <div className="mt-6">
-                <button className="btn default">
-                  <a href="#about">Check Us Out</a>
-                </button>
+                <a href="#about">
+                  <Button className="ml-0" outlined>
+                    Check Us Out
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

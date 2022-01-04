@@ -23,11 +23,19 @@
   }
 
   .default {
-    @apply bg-gray-100 text-gray-900;
+    @apply bg-white text-gray-900;
   }
 
   .default:hover {
     @apply bg-gray-300;
+  }
+
+  .default.outlined {
+    @apply bg-white border border-gray-900 text-gray-900;
+  }
+
+  .default.outlined:hover {
+    @apply text-white bg-gray-900;
   }
 
   .primary {
@@ -38,12 +46,28 @@
     @apply bg-sky-600 text-white;
   }
 
+  .primary-outlined {
+    @apply bg-white border border-sky-500 text-sky-500;
+  }
+
+  .primary-outlined:hover {
+    @apply bg-sky-500 text-white;
+  }
+
   .success {
     @apply bg-green-500 text-white;
   }
 
   .success:hover {
     @apply bg-green-600 text-white;
+  }
+
+  .success.outlined {
+    @apply bg-white border border-green-500 text-green-500;
+  }
+
+  .success.outlined:hover {
+    @apply bg-green-500 text-white;
   }
 
   .info {
@@ -54,12 +78,28 @@
     @apply bg-blue-600 text-white;
   }
 
+  .info.outlined {
+    @apply bg-white border border-blue-500 text-blue-500;
+  }
+
+  .info.outlined:hover {
+    @apply bg-blue-500 text-white;
+  }
+
   .warning {
     @apply bg-yellow-400 text-white;
   }
 
   .warning:hover {
     @apply bg-yellow-500 text-white;
+  }
+
+  .warning.outlined {
+    @apply bg-white border border-yellow-400 text-yellow-400;
+  }
+
+  .warning.outlined:hover {
+    @apply bg-yellow-400 text-white;
   }
   
   .danger {
@@ -70,12 +110,28 @@
     @apply bg-red-600 text-white;
   }
 
+  .danger.outlined {
+    @apply bg-white border border-red-500 text-red-500;
+  }
+  
+  .danger.outlined:hover {
+    @apply bg-red-500 text-white;
+  }
+
   .dark {
     @apply bg-gray-800 text-white;
   }
 
   .dark:hover {
     @apply bg-gray-900 text-white;
+  }
+
+  .dark.outlined {
+    @apply bg-white border border-gray-800 text-gray-800;
+  }
+
+  .dark.outlined:hover {
+    @apply bg-gray-800 text-white;
   }
 
   .disabled {
