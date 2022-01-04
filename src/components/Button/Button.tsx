@@ -15,16 +15,18 @@ interface ButtonProps {
   children: React.ReactNode
   onClick?: () => void
   variant?: Variant
+  outlined?: boolean
   size?: Size
   nav?: boolean
   disabled?: boolean
 }
 
 export default function Button({
-  className,
+  className = '',
   children,
   onClick,
   variant = 'default',
+  outlined = false,
   size = 'md',
   nav,
   disabled,
@@ -33,7 +35,7 @@ export default function Button({
   return (
     <button
       className={
-        `btn ${variant} ${size} ${className}` +
+        `btn ${variant} ${outlined ? 'outlined' : ''} ${size} ${className}` +
         (nav ? 'nav' : '') +
         (disabled ? ' disabled' : '')
       }

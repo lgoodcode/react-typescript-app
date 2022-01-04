@@ -13,7 +13,7 @@ const StyledLanding = styled.div`
 
   &::before {
     content: '';
-    background: rgb(0 0 0 / 50%);
+    background: rgb(0 0 0 / 40%);
     position: absolute;
     bottom: 0;
     top: 0;
@@ -38,8 +38,10 @@ export default function Landing() {
         </div>
 
         <div className="flex justify-center mt-8">
-          <Button className="btn lg dark">Our Menu</Button>
-          <Button className="btn lg default">Place an Order</Button>
+          <Button size="lg" variant="dark">
+            Our Menu
+          </Button>
+          <Button size="lg">Place an Order</Button>
         </div>
       </div>
     </StyledLanding>
