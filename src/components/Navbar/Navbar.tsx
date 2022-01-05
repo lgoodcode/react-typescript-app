@@ -80,6 +80,7 @@ export default function Navbar() {
           <div className="navbarItems hidden lg:block md:ml-10 md:pr-4 md:space-x-2">
             {navigation.map((item) => (
               <Button
+                key={item.name}
                 className={item.current ? 'bg-gray-300/40' : ''}
                 variant="none"
                 link={item.href}
