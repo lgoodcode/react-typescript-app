@@ -46,7 +46,7 @@ export default function Navbar() {
         className={classNames(
           'navbar',
           scrolled ? 'bg-gray-800 shadow-[0_2px_10px] shadow-gray-900' : '',
-          'fixed min-w-full z-30 p-4 sm:px-8 md:px-12 transition-all duration-500'
+          'fixed min-w-full z-30 px-4 sm:py-2 sm:px-8 md:px-12 transition-all duration-500'
         )}
       >
         <div className="relative flex items-center justify-between sm:h-10 md:justify-end">
