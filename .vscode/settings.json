@@ -18,6 +18,7 @@
     "typescriptreact"
   ],
   "markdownlint.config": {
-    "MD025": false
+    "MD025": false,
+    "MD041": false
   }
 }

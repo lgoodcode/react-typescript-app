@@ -1,3 +1,8 @@
+![Build](https://github.com/toomuchrice4u/torn-pages/actions/workflows/build_and_test.yml/badge.svg?branch=master)
+![Deployed to Heroku](https://github.com/toomuchrice4u/torn-pages/actions/workflows/deploy.yml/badge.svg?branch=master)
+
+#### [View Deployed Version](https://torn-pages.herokuapp.com)
+
 # React Typescript App
 
 Base configuration for building React apps in Typescript with Webpack and workflow
@@ -154,8 +159,9 @@ Creating the `settings.json` file:
     "typescript",
     "typescriptreact"
   ],
-  "markdownlint.config": {              // MarkdownLint extension to ignore multiple h1 headers
-    "MD025": false
+  "markdownlint.config": {              
+    "MD025": false,                     // MarkdownLint extension to ignore multiple h1 headers
+    "MD041": false                      // MarkdownLint extension to ignore non-h1 first line
   }
 }
 ```
