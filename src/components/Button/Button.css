@@ -46,11 +46,11 @@
     @apply bg-sky-600 text-white;
   }
 
-  .primary-outlined {
+  .primary.outlined {
     @apply bg-white border border-sky-500 text-sky-500;
   }
 
-  .primary-outlined:hover {
+  .primary.outlined:hover {
     @apply bg-sky-500 text-white;
   }
 

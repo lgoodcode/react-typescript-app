@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="relative flex items-center justify-between sm:h-10 md:justify-end">
           <div className="flex items-center flex-grow flex-shrink-0 lg:mr-auto lg:flex-grow-0">
             <div className="flex items-center justify-between w-full lg:w-auto">
-              <Button data-testid="logo" className="logo" nav icon>
+              <Button data-testid="logo" className="logo lg:hidden" nav icon>
                 <a href="/">
                   <span className="sr-only">Brand</span>
                   <img
@@ -62,33 +62,32 @@ export default function Navbar() {
                   />
                 </a>
               </Button>
-              <Button
-                data-testid="hamburger"
-                className="hamburger-btn p-0 lg:hidden"
-                nav
-                icon
-                onClick={() => setOpen(!open)}
-              >
-                <span className="sr-only">Menu</span>
+              <div className="lg:hidden">
+                <Button
+                  data-testid="hamburger"
+                  className="hamburger-btn p-0"
+                  variant="none"
+                  icon
+                  onClick={() => setOpen(!open)}
+                >
+                  <span className="sr-only">Menu</span>
 
-                <Hamburger size={24} toggled={open} />
-              </Button>
+                  <Hamburger size={24} toggled={open} />
+                </Button>
+              </div>
             </div>
           </div>
           <div className="navbarItems hidden lg:block md:ml-10 md:pr-4 md:space-x-2">
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={classNames(
-                  item.current ? 'bg-gray-300/40' : '',
-                  'btn',
-                  'btn-nav'
-                )}
+              <Button
+                className={item.current ? 'bg-gray-300/40' : ''}
+                variant="none"
+                link={item.href}
+                nav
                 aria-current={item.current ? 'page' : undefined}
               >
                 {item.name}
-              </a>
+              </Button>
             ))}
           </div>
         </div>

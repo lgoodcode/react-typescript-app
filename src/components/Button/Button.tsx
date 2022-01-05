@@ -15,12 +15,13 @@ interface ButtonProps {
   children: React.ReactNode
   className?: string
   onClick?: () => void
+  size?: Size
   variant?: Variant
   outlined?: boolean
-  size?: Size
   nav?: boolean
   icon?: boolean
   disabled?: boolean
+  link?: string
 }
 
 /**
@@ -31,25 +32,27 @@ export default function Button({
   children,
   className = '',
   onClick,
-  variant = 'default',
-  outlined = false,
   size = 'md',
+  variant = 'default',
+  outlined,
   nav,
-  icon = false,
+  icon,
   disabled,
+  link,
   ...rest
 }: ButtonProps): JSX.Element {
   return (
     <button
       className={
-        `btn ${size} ${className} ` +
-        (variant !== 'none' && variant + ' ') +
-        (nav && 'nav ') +
-        (icon && 'icon ') +
-        (outlined && 'outlined ') +
-        (disabled && ' disabled ')
+        (nav ? 'nav ' : '') +
+        `btn ${size}` +
+        (variant === 'none' ? '' : ` ${variant}`) +
+        (outlined ? ' outlined' : '') +
+        (icon ? ' icon' : '') +
+        (disabled ? ' disabled' : '') +
+        ` ${className}`
       }
-      onClick={onClick}
+      onClick={link ? () => (window.location.href = link) : onClick}
       disabled={disabled}
       {...rest}
     >
