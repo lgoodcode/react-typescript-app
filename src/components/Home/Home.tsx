@@ -20,8 +20,11 @@ export default function Home(): JSX.Element {
       <Landing />
 
       <section className="about pt-20 pb-32 bg-gray-100">
-        <div className="lg:grid lg:grid-cols-2 space-x-12" data-aos="fade-up">
-          <div className="">
+        <div
+          className="lg:grid lg:grid-cols-2 lg:space-x-12"
+          data-aos="fade-up"
+        >
+          <div>
             <div>
               <h3 className="text-4xl text-gray-700 font-medium">About Us</h3>
               <div className="mt-8 text-gray-600">

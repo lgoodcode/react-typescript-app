@@ -2,6 +2,7 @@ import './Button.css'
 
 type Size = 'sm' | 'md' | 'lg'
 type Variant =
+  | 'none'
   | 'default'
   | 'primary'
   | 'info'
@@ -18,6 +19,7 @@ interface ButtonProps {
   outlined?: boolean
   size?: Size
   nav?: boolean
+  icon?: boolean
   disabled?: boolean
 }
 
@@ -33,15 +35,19 @@ export default function Button({
   outlined = false,
   size = 'md',
   nav,
+  icon = false,
   disabled,
   ...rest
 }: ButtonProps): JSX.Element {
   return (
     <button
       className={
-        `btn ${variant} ${outlined ? 'outlined' : ''} ${size} ${className}` +
-        (nav ? 'nav' : '') +
-        (disabled ? ' disabled' : '')
+        `btn ${size} ${className} ` +
+        (variant !== 'none' && variant + ' ') +
+        (nav && 'nav ') +
+        (icon && 'icon ') +
+        (outlined && 'outlined ') +
+        (disabled && ' disabled ')
       }
       onClick={onClick}
       disabled={disabled}

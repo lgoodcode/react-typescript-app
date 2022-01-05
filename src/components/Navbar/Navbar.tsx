@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Hamburger from 'hamburger-react'
 import classNames from '../../util/classNames'
+import Button from '../Button'
 import MobileMenu from './MobileMenu'
 import Logo from '../../logo.svg'
 import navigation from './navigation'
@@ -51,27 +52,27 @@ export default function Navbar() {
         <div className="relative flex items-center justify-between sm:h-10 md:justify-end">
           <div className="flex items-center flex-grow flex-shrink-0 lg:mr-auto lg:flex-grow-0">
             <div className="flex items-center justify-between w-full lg:w-auto">
-              <a
-                href="/"
-                className="logo btn btn-nav btn-icon"
-                data-testid="logo"
-              >
-                <span className="sr-only">Brand</span>
-                <img
-                  className="h-8 w-auto sm:h-10"
-                  src={Logo}
-                  alt="brand logo"
-                />
-              </a>
-              <button
+              <Button data-testid="logo" className="logo" nav icon>
+                <a href="/">
+                  <span className="sr-only">Brand</span>
+                  <img
+                    className="h-8 w-auto sm:h-10"
+                    src={Logo}
+                    alt="brand logo"
+                  />
+                </a>
+              </Button>
+              <Button
                 data-testid="hamburger"
-                className="hamburger-btn btn btn-nav btn-icon p-0 lg:hidden"
+                className="hamburger-btn p-0 lg:hidden"
+                nav
+                icon
                 onClick={() => setOpen(!open)}
               >
                 <span className="sr-only">Menu</span>
 
                 <Hamburger size={24} toggled={open} />
-              </button>
+              </Button>
             </div>
           </div>
           <div className="navbarItems hidden lg:block md:ml-10 md:pr-4 md:space-x-2">

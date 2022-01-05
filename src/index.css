@@ -23,16 +23,16 @@
     @apply duration-300;
   }
 
-  .btn-icon {
+  .btn.icon {
     @apply block p-2 rounded-md text-base font-medium;
   }
 
-  .btn-nav {
+  .btn.nav {
     @apply bg-transparent rounded;
     @apply text-gray-50 sm:hover:text-gray-100 sm:hover:bg-gray-300/30;
   }
 
-  .btn-nav-mobile {
+  .btn.nav-mobile {
     @apply block px-3 py-2 rounded-md text-base font-medium;
   }
 }
