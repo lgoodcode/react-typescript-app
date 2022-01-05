@@ -11,8 +11,8 @@ type Variant =
   | 'dark'
 
 interface ButtonProps {
-  className?: string
   children: React.ReactNode
+  className?: string
   onClick?: () => void
   variant?: Variant
   outlined?: boolean
@@ -21,9 +21,13 @@ interface ButtonProps {
   disabled?: boolean
 }
 
+/**
+ * @property size
+ * @returns
+ */
 export default function Button({
-  className = '',
   children,
+  className = '',
   onClick,
   variant = 'default',
   outlined = false,
