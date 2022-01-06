@@ -1,4 +1,4 @@
-![Build](https://github.com/toomuchrice4u/torn-pages/actions/workflows/build_and_test.yml/badge.svg?branch=master)
+![Build](https://github.com/toomuchrice4u/torn-pages/actions/workflows/build.yml/badge.svg?branch=master)
 ![Deployed to Heroku](https://github.com/toomuchrice4u/torn-pages/actions/workflows/deploy.yml/badge.svg?branch=master)
 
 #### [View Deployed Version](https://torn-pages.herokuapp.com)
@@ -582,14 +582,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Heroku
 
-To deploy the app to Heroku we first need to make a minor fix that will otherwise cause the build
-to fail. We need to install `fsevents` as a optional dependency because a gives an error of:
-`fsevents not accessible from jest-haste-map`. We use this [solution](https://stackoverflow.com/questions/68021121/fsevents-not-accessible-from-jest-haste-map) to fix it:
-
-```bash
-npm i fsevents@latest -f --save-optional
-```
-
 **The following guide is based on the official [Heroku deployment with Git](https://devcenter.heroku.com/articles/git)**:
 
 We will be deploying for a NodeJS backend so we want to create the application using Heroku's buildpack:
@@ -625,3 +617,5 @@ Once the build suceeds you can open the app:
 ```bash
 heroku open
 ```
+
+or you can enter the link which would be: `<PROJECT_NAME>.herokuapp.com`
