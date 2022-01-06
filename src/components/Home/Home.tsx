@@ -33,11 +33,9 @@ export default function Home(): JSX.Element {
                 <p className="mt-6 md:max-w-lg">{lorem.generateSentences(4)}</p>
               </div>
               <div className="mt-6">
-                <a href="#about">
-                  <Button className="ml-0" outlined>
-                    Check Us Out
-                  </Button>
-                </a>
+                <Button className="ml-0" outlined link="#about">
+                  Check Us Out
+                </Button>
               </div>
             </div>
           </div>

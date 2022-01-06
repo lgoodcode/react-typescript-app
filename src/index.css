@@ -50,10 +50,6 @@ html {
 }
 
 body {
-  /**
-   * Set the height to full so that the body can not scroll when mobile menu is open
-   * https://stackoverflow.com/questions/19236349/body-set-to-overflow-yhidden-but-page-is-still-scrollable-in-chrome/27452471
-   */
   height: 100%;
   color: white;
   margin: 0;

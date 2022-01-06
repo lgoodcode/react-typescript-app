@@ -12,8 +12,9 @@ tools such as ESLint, StyleLint, Prettier, and others.
 
 - [React Typescript App](#react-typescript-app)
 - [Table of Contents](#table-of-contents)
-- [About](#about)
-- [Quickstart](#quickstart)
+- [Getting Started](#getting-started)
+  - [TODO](#todo)
+  - [Extras](#extras)
 - [Setup the Project](#setup-the-project)
   - [VSCode Extensions](#vscode-extensions)
   - [ESLint](#eslint)
@@ -39,6 +40,7 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [Git Hooks](#git-hooks)
   - [lint-staged](#lint-staged)
   - [husky](#husky)
+- [Github Actions Pipeline](#github-actions-pipeline)
 - [Available Scripts](#available-scripts)
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
@@ -47,19 +49,42 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [Heroku](#heroku)
     - [Deploying Code](#deploying-code)
 
-# About
+# Getting Started
 
 This project is a starter for Typescript React apps and includes configured files for the VSCode IDE,
-modules, and configuration files like package.json *(includes the Heroku deployment fix)*.
+modules, and configuration files like package.json.
 
 This README was built with the help of the [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) extension and [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) for formatting.
 
-# Quickstart
-
 To use the initial configuration of the files in the project, simply run the install command,
 `npm install` to install all the npm modules in the `package.json`. You will, however, need to check
-out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow
-tools to work.
+out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow tools to work.
+
+## TODO
+
+Ensure that you complete these items to configure it from the placeholders to the desired values:
+
+1. Modify the lint files for the rules you want in your style.
+2. Modify the package.json project name and the lint scripts if needed.
+3. Set the `favicon.ico`, `manifest.json`, logos, and the page title and meta in the `index.html`
+   in the public directory.
+4. Modify the `.vscode` settings or tasks as needed.
+5. Adjust the pre-commit hook if needed.
+6. Adjust the Github Action `deploy.yml` workflow to the proper platform.
+
+## Extras
+
+Install the [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) extension for easily identifiable files in the directory.
+
+The present `tailwind.config.js` has two custom colors; pale and midnight. It also has added padding
+to the `.container` class. **Note**: if you generate a new config you need to set the path of the
+content to:
+
+```js
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}'
+  ]
+```
 
 # Setup the Project
 
@@ -550,6 +575,19 @@ non-zero exit code, it will cancel the commit. If you want to bypass the hook yo
 ```bash
 git commit -m --no-verify "test commit"
 ```
+
+# Github Actions Pipeline
+
+The project comes with two already configured workflows that are used for Github Actions.
+
+`build.yml` will run on `push` for any branch and on `pull-requests` for the `main` branch.
+It will first ensure that the npm dependencies install with no problem and caches them. It then
+runs three seperate jobs: lint, test, and build. Each job depends on the install job, which
+the cache for the installed modules is used to speed up the process.
+
+`deploy.yml` only runs on `push` for the `main` branch. It follows the same process as the
+`build.yml` except it has an additional job, deploy, which will only run if the build job
+completes. This is to ensure that it won't attempt to deploy a failed build.
 
 # Available Scripts
 
