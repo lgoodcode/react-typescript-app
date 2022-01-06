@@ -22,6 +22,7 @@ interface ButtonProps {
   icon?: boolean
   disabled?: boolean
   link?: string
+  target?: string
 }
 
 /**
@@ -39,24 +40,36 @@ export default function Button({
   icon,
   disabled,
   link,
+  target = '_self',
   ...rest
 }: ButtonProps): JSX.Element {
-  return (
+  return !link ? (
     <button
-      className={
-        (nav ? 'nav ' : '') +
-        `btn ${size}` +
-        (variant === 'none' ? '' : ` ${variant}`) +
-        (outlined ? ' outlined' : '') +
-        (icon ? ' icon' : '') +
-        (disabled ? ' disabled' : '') +
-        ` ${className}`
-      }
-      onClick={link ? () => (window.location.href = link) : onClick}
+      className={`${nav ? 'nav ' : ''}btn ${size}${
+        variant === 'none' ? '' : ` ${variant}`
+      }${outlined ? ' outlined' : ''}${icon ? ' icon' : ''}${
+        disabled ? ' disabled' : ''
+      } ${className}`}
       disabled={disabled}
       {...rest}
     >
       {children}
     </button>
+  ) : (
+    <a
+      href={link}
+      target={link && target}
+      onClick={
+        disabled ? (e: React.MouseEvent) => e.preventDefault() : () => null
+      }
+      className={`${nav ? 'nav ' : ''}btn ${size}${
+        variant === 'none' ? '' : ` ${variant}`
+      }${outlined ? ' outlined' : ''}${icon ? ' icon' : ''}${
+        disabled ? ' disabled' : ''
+      } ${className}`}
+      {...rest}
+    >
+      {children}
+    </a>
   )
 }

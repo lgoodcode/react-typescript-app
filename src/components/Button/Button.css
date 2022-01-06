@@ -31,7 +31,7 @@
   }
 
   .default.outlined {
-    @apply bg-white border border-gray-900 text-gray-900;
+    @apply bg-transparent border border-gray-900 text-gray-900;
   }
 
   .default.outlined:hover {
@@ -47,7 +47,7 @@
   }
 
   .primary.outlined {
-    @apply bg-white border border-sky-500 text-sky-500;
+    @apply bg-transparent border border-sky-500 text-sky-500;
   }
 
   .primary.outlined:hover {
@@ -63,7 +63,7 @@
   }
 
   .success.outlined {
-    @apply bg-white border border-green-500 text-green-500;
+    @apply bg-transparent border border-green-500 text-green-500;
   }
 
   .success.outlined:hover {
@@ -79,7 +79,7 @@
   }
 
   .info.outlined {
-    @apply bg-white border border-blue-500 text-blue-500;
+    @apply bg-transparent border border-blue-500 text-blue-500;
   }
 
   .info.outlined:hover {
@@ -95,7 +95,7 @@
   }
 
   .warning.outlined {
-    @apply bg-white border border-yellow-400 text-yellow-400;
+    @apply bg-transparent border border-yellow-400 text-yellow-400;
   }
 
   .warning.outlined:hover {
@@ -111,7 +111,7 @@
   }
 
   .danger.outlined {
-    @apply bg-white border border-red-500 text-red-500;
+    @apply bg-transparent border border-red-500 text-red-500;
   }
   
   .danger.outlined:hover {
@@ -127,7 +127,7 @@
   }
 
   .dark.outlined {
-    @apply bg-white border border-gray-800 text-gray-800;
+    @apply bg-transparent border border-gray-800 text-gray-800;
   }
 
   .dark.outlined:hover {
