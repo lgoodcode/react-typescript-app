@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Install:
+  install:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies with clean install
         run: npm ci
 
-  Lint:
+  lint:
     runs-on: ubuntu-latest
     needs: install
     strategy:
@@ -42,7 +42,7 @@ jobs:
       - run: npm run lint
       - run: npm run lint:css
 
-  Test: 
+  test: 
     runs-on: ubuntu-latest
     needs: install
     strategy:
@@ -60,7 +60,7 @@ jobs:
       - run: npm install
       - run: npm run test
 
-  Build:
+  build:
     runs-on: ubuntu-latest
     needs: install
     strategy:
@@ -78,9 +78,9 @@ jobs:
       - run: npm install
       - run: npm run build
 
-  Deploy:
+  deploy:
     runs-on: ubuntu-latest
-    needs: ['Build']
+    needs: build
     steps:
       - uses: actions/checkout@v2
       # Custom action to deploy to heroku
