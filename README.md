@@ -13,6 +13,7 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [React Typescript App](#react-typescript-app)
 - [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
+  - [***IMPORTANT:***](#important)
   - [TODO](#todo)
   - [Extras](#extras)
 - [Setup the Project](#setup-the-project)
@@ -60,6 +61,22 @@ This README was built with the help of the [Markdown All in One](https://marketp
 To use the initial configuration of the files in the project, simply run the install command,
 `npm install` to install all the npm modules in the `package.json`. You will, however, need to check
 out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow tools to work.
+
+## ***IMPORTANT:***
+
+Make sure to update the npm packages so to fix any vulnerabilities
+
+```bash
+npm audit fix --force
+```
+
+or
+
+```bash
+npm update
+```
+
+to simply update all the packages.
 
 ## TODO
 
