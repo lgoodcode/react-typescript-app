@@ -2,7 +2,6 @@ name: Build
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: 
       - '**'
@@ -34,9 +33,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-
-      - name: Upgrade NPM
-        run: npm install -g npm
 
       - name: Install dependencies with clean install
         run: npm ci
