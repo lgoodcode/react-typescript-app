@@ -36,6 +36,7 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [TailwindCSS Config](#tailwindcss-config)
   - [ESLint Config](#eslint-config)
   - [Prettier Config](#prettier-config)
+  - [.gitignore](#gitignore)
   - [Scripts](#scripts)
 - [Git Hooks](#git-hooks)
   - [lint-staged](#lint-staged)
@@ -468,7 +469,7 @@ Add the `.eslintignore` file to prevent lint checking certain files:
 // .eslintignore
 .idea
 .storybook
-.config
+*.config.js       # ignores the tailwind config
 node_modules/*
 config/*
 public/*
@@ -489,6 +490,40 @@ src/reportWebVitals.ts
   "trailingComma": "none",
   "semi": false
 }
+```
+
+## .gitignore
+
+The following is a good configuration for files to note be added to the repository,
+including the lint cache files, which cache the files linted and only checks ones
+that have changed to improve performance:
+
+```bash
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# linting cache
+.eslintcache
+.stylelintcache
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 ```
 
 ## Scripts
