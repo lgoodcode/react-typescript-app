@@ -62,6 +62,9 @@ To use the initial configuration of the files in the project, simply run the ins
 `npm install` to install all the npm modules in the `package.json`. You will, however, need to check
 out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow tools to work.
 
+This project comes with a `dependabot.yml` configuration to work with Github repositories. It will
+automatically check for updates for the Github Actions and NPM dependencies for the project.
+
 ## ***IMPORTANT:***
 
 Make sure to update the npm packages so to fix any vulnerabilities
