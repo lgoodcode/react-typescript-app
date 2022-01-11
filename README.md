@@ -688,7 +688,8 @@ Netlify also can auto-deploy for continuous deployment **CD** or we can disable 
 manually deploy it via the `netlify-cli` npm module.
 
 If you opt to automatically deploy whenever the `main` branch is pushed, leave the default setting
-on the Netlify overview.
+on the Netlify overview. **Note:** the project uses auto-deploy so that whenever an update to the
+main branch is pushed, it will automatically build and deploy the update.
 
 If you want to manually trigger deployments, it will allow you to deploy previews, which builds
 and runs the site on a temporary URL to view how it will look and run before a production deploy.
