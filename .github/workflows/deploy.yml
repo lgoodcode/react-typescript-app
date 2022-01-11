@@ -27,4 +27,4 @@ jobs:
         env: 
         with:
           args: deploy --prod
-          secrets: ["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
