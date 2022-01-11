@@ -1,7 +1,7 @@
 ![Build](https://github.com/toomuchrice4u/torn-pages/actions/workflows/build.yml/badge.svg?branch=master)
-![Deployed to Heroku](https://github.com/toomuchrice4u/torn-pages/actions/workflows/deploy.yml/badge.svg?branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/566ea990-2c37-4886-8c3b-b5b0d2077db2/deploy-status)](https://app.netlify.com/sites/torn-pages/deploys)
 
-#### [View Deployed Version](https://torn-pages.herokuapp.com)
+#### [View Live](https://torn-pages.netlify.app)
 
 # React Typescript App
 
@@ -48,8 +48,8 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [`npm test`](#npm-test)
   - [`npm run build`](#npm-run-build)
 - [Deployment](#deployment)
-  - [Heroku](#heroku)
-    - [Deploying Code](#deploying-code)
+  - [Netlify](#netlify)
+    - [Manual Deployment](#manual-deployment)
 
 # Getting Started
 
@@ -673,7 +673,57 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 # Deployment
 
-## Heroku
+## Netlify
+
+After some research, the project is split into front-end and back-end projects to reduce the
+size of the repository, easier management, and because the platforms that each part of the stack
+will be hosted on has different features that have pros depending on whether it is front or back
+end architecture.
+
+Netlify was chosen to host the front-end because it can simply connect to the Git repository and
+doesn't require a seperate repository, which Heroku does. It also automatically uses SSL to give
+the site an HTTPS address which Heroku doesn't do if I remember correctly.
+
+Netlify also can auto-deploy for continuous deployment **CD** or we can disable that setting to
+manually deploy it via the `netlify-cli` npm module.
+
+If you opt to automatically deploy whenever the `main` branch is pushed, leave the default setting
+on the Netlify overview.
+
+If you want to manually trigger deployments, it will allow you to deploy previews, which builds
+and runs the site on a temporary URL to view how it will look and run before a production deploy.
+
+### Manual Deployment
+
+Install the CLI for Netlify:
+
+```bash
+npm install -g netlify-cli
+```
+
+Once installed, go to the directory of the project and enter the deploy command which, if the
+project is already configured on the site, just ask which site to connect the project folder to.
+If not already configured on the site, it will prompt you to configure the initial settings.
+
+When done, using the command:
+
+```bash
+netlify deploy
+```
+
+will do deploy a preview and
+
+```bash
+netlify deploy --prod
+```
+
+does the production build.
+
+It will also create a `.netlify` directory to manage the site it is connected to for any further
+Netlify commands. The directory is automatically added to the `.gitignore` file so it doesn't get
+added to the repository.
+
+<!-- ## Heroku
 
 **The following guide is based on the official [Heroku deployment with Git](https://devcenter.heroku.com/articles/git)**:
 
@@ -711,4 +761,4 @@ Once the build suceeds you can open the app:
 heroku open
 ```
 
-or you can enter the link which would be: `<PROJECT_NAME>.herokuapp.com`
+or you can enter the link which would be: `<PROJECT_NAME>.herokuapp.com` -->
