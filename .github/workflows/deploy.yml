@@ -24,7 +24,9 @@ jobs:
       - name: Deploy to Netlify
       # Custom action to deploy to heroku
         uses: netlify/actions/cli@master
-        env: 
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           args: deploy --prod
           secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
