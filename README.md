@@ -98,8 +98,9 @@ Ensure that you complete these items to configure it from the placeholders to th
 Install the [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) extension for easily identifiable files in the directory.
 
 The present `tailwind.config.js` has two custom colors; pale and midnight. It also has added padding
-to the `.container` class. **Note**: if you generate a new config you need to set the path of the
-content to:
+to the `.container` class.
+
+**Note**: if you generate a new config you need to set the path of the content:
 
 ```js
   content: [
@@ -529,6 +530,9 @@ that have changed to improve performance:
 
 # production
 /build
+
+# Local Netlify folder
+/.netlify
 
 # linting cache
 .eslintcache
