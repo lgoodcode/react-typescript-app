@@ -13,7 +13,7 @@ tools such as ESLint, StyleLint, Prettier, and others.
 - [React Typescript App](#react-typescript-app)
 - [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
-  - [***IMPORTANT:***](#important)
+  - [***IMPORTANT***](#important)
   - [TODO](#todo)
   - [Extras](#extras)
 - [Setup the Project](#setup-the-project)
@@ -65,7 +65,7 @@ out the [VSCode Extentions](#vscodeExtensions) section if you want the workflow 
 This project comes with a `dependabot.yml` configuration to work with Github repositories. It will
 automatically check for updates for the Github Actions and NPM dependencies for the project.
 
-## ***IMPORTANT:***
+## ***IMPORTANT***
 
 Make sure to update the npm packages so to fix any vulnerabilities
 
