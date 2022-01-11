@@ -1,4 +1,4 @@
-name: Deploy to Heroku
+name: Deploy to Netlify
 
 on:
   push:
@@ -6,80 +6,8 @@ on:
       - main
 
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Install dependencies with clean install
-        run: npm ci
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: install
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use cached dependencies ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          
-      - run: npm install
-      - run: npm run lint
-      - run: npm run lint:css
-
-  test: 
-    runs-on: ubuntu-latest
-    needs: install
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use cached dependencies ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - run: npm install
-      - run: npm run test
-
-  build:
-    runs-on: ubuntu-latest
-    needs: install
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use cached dependencies ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-
-
   deploy:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       # Get code from repo
       - name: Checkout code
@@ -89,6 +17,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
+          cache: npm
+      # Install dependencies
+      - run: npm install
       # Deploy to Netlify
       - name: Deploy to Netlify
       # Custom action to deploy to heroku
@@ -96,4 +27,4 @@ jobs:
         env: 
         with:
           args: deploy --prod
-          secrets: '[]'
+          secrets: ["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]
