@@ -32,7 +32,7 @@ interface ButtonProps {
 export default function Button({
   children,
   className = '',
-  onClick,
+  onClick = () => null,
   size = 'md',
   variant = 'default',
   outlined,
@@ -45,6 +45,7 @@ export default function Button({
 }: ButtonProps): JSX.Element {
   return !link ? (
     <button
+      onClick={onClick}
       className={`${nav ? 'nav ' : ''}btn ${size}${
         variant === 'none' ? '' : ` ${variant}`
       }${outlined ? ' outlined' : ''}${icon ? ' icon' : ''}${

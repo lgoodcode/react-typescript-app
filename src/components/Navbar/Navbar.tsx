@@ -71,7 +71,6 @@ export default function Navbar() {
                   onClick={() => setOpen(!open)}
                 >
                   <span className="sr-only">Menu</span>
-
                   <Hamburger size={24} toggled={open} />
                 </Button>
               </div>
