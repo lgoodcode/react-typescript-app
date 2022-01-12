@@ -27,6 +27,9 @@ tools such as ESLint, StyleLint, Prettier, and others.
   - [Path Intellisense](#path-intellisense)
   - [Auto Close Tag](#auto-close-tag)
   - [Auto Rename Tag](#auto-rename-tag)
+  - [Remote SSH](#remote-ssh)
+  - [Markdown](#markdown)
+  - [Git](#git)
   - [Configuration](#configuration)
 - [Installing the Development Dependencies](#installing-the-development-dependencies)
   - [Create React App](#create-react-app)
@@ -175,6 +178,35 @@ by automatically creating it once the opening tag is created.
 
 Helpful tool and helps prevent errors when changing a tag by automatically changing the
 closing tag synchronously.
+
+## [Remote SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+
+This allows you to use an SSH key for Github commits or in general to SSH to a remote server.
+
+## Markdown
+
+These help in creating a consistent and nice format README file:
+
+[Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)\
+[markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+
+## Git
+
+When using Git, there are so extra extensions that can be of value that aren't intrusive to the
+workspace:
+
+[Github Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+
+This is an official extension from Github that allows you to access pull requests and issues directly
+from the editor.
+
+[Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
+
+This extension allows you to see the commit history of a branch in the editor.
+
+[Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+
+This creates a visual timeline.
 
 ## Configuration
 
