@@ -2,7 +2,6 @@ import { LoremIpsum } from 'lorem-ipsum'
 import Landing from './Landing'
 import Button from '../Button'
 import AboutImg from '../../img/covered-food-truck.jpg'
-import MemeImg from '../../img/seed-meme.png'
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
