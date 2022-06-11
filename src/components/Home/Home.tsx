@@ -45,31 +45,6 @@ export default function Home(): JSX.Element {
           </div>
         </div>
       </section>
-
-      <section className="meme pt-20 pb-4">
-        <div>
-          <h1 className="text-4xl text-gray-700 font-medium">Crypto gang</h1>
-          <div className="text-gray-600">
-            <p className="mt-6 md:max-w-lg">Big gains</p>
-            <p className="mt-6 md:max-w-lg">Such metaverse</p>
-          </div>
-        </div>
-        <div className="mt-8">
-          <img src={MemeImg} loading="lazy" className="h-72 w-90 my-auto" />
-        </div>
-        <div className="mt-8 justify-center flex flex-col text-gray-700">
-          <p>
-            Get you free Doge coin here. Just click the button and paste your
-            wallet seed.
-          </p>
-          <Button variant="info" outlined size="lg" className="mt-8">
-            Get Free Doge
-          </Button>
-        </div>
-        <div className="text-gray-400 ml-4">
-          <p className="text-xs">Totally not a trap</p>
-        </div>
-      </section>
     </>
   )
 }
