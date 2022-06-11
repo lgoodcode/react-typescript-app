@@ -3,6 +3,12 @@
 
 #### [View Live](https://torn-pages.netlify.app)
 
+# About
+
+This is the first project where I started messing around learning Typescript and
+React. I documented the project structure, which is originally an [CRA](https://create-react-app.dev/)
+that is ejected for full configurations.
+
 # React Typescript App
 
 Base configuration for building React apps in Typescript with Webpack and workflow
